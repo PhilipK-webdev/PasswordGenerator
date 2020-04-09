@@ -20,12 +20,14 @@ function generatePassword() {
   var passLength = 0;
   var theLengthPassword = 0;
   var flag = false;
-  var str;
+  var passwordLocal;
+  var type;
 
   alert("Welcome to our password generator !");
   alert("For your password there is a password criteria " + "\nthat you need to choice from");
 
   while (flag === false) {
+
     theLengthPassword = prompt("The first option is generate the password with the length criteria" + "\nchoice number between 8 and 128");
 
     if (theLengthPassword >= 8) {
@@ -40,23 +42,58 @@ function generatePassword() {
   }
 
 
-  str = makingRandomPaswword(passLength);
+  flag = false;
+
+  while (flag === false) {
+
+    type = prompt("charachter types to include in the password" + "\nlowercase, uppercase, numeric and/or special character");
+    if (type.toLocaleLowerCase() === "lowercase" ||
+      type.toLocaleLowerCase() === "uppercase" ||
+      type.toLocaleLowerCase() === "numeric" ||
+      type.toLocaleLowerCase() === "special character") {
+
+      flag = true;
+    }
+
+  }
 
 
-  return str;
+  passwordLocal = makingRandomPaswword(passLength, type);
+
+  return passwordLocal;
 
 }
 
-function makingRandomPaswword(passLength) {
+function makingRandomPaswword(passLength, type) {
 
   var str = "";
-  var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var characters;
+
+  if (type.toLocaleLowerCase() === "lowercase") {
+
+    characters = "abcdefghijklmnopqrstuvwxyz";
+
+  } else if (type.toLocaleLowerCase() === "uppercase") {
+
+    characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  } else if (type.toLocaleLowerCase() === "numeric") {
+
+    characters = "0123456789";
+  } else {
+
+    characters = "'#$%&()*+,-./:;<=>?@";
+  }
 
   for (var i = 0; i < passLength; i++) {
 
     str += characters.charAt(Math.floor(Math.random() * characters.length));
+
   }
 
   return str;
 
 }
+
+
+
+
