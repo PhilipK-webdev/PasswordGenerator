@@ -26,33 +26,64 @@ function generatePassword() {
 
 
 
+
   alert("Welcome to our password generator !");
-  alert("For your password there is a password criteria " + "\nthat you need to choice from");
+  alert("To generate a new password there is 2 Acceptance Criteria: " +
+    "\n1:length of the password" +
+    "\n2: character types to include in the password");
 
   while (creatiriaFlag === false) {
 
     theLengthPassword = prompt("The first option is generate the password with the length criteria" + "\nchoice number between 8 and 128");
 
-    if (theLengthPassword >= 8 && theLengthPassword <= 128) {
-      creatiriaFlag = true;
+    if (Number.isInteger(+theLengthPassword) === true) {
+
+      if (theLengthPassword >= 8 && theLengthPassword <= 128) {
+        creatiriaFlag = true;
+      }
+
+    } else {
+
+      alert("The Number Supposed to be an Integer between " + "\n8 and 128");
     }
   }
 
-  creatiriaFlag = false;
 
-  lengthType = prompt("How many types of characters you want ? " + "/n1,2,3,4 ?");
+  creatiriaFlag = false;
+  lengthType = prompt("The second option is how many types of character you want in your password ?" +
+    "\n1,2,3,4 ?");
+
+  while (creatiriaFlag === false) {
+
+    if (lengthType > 0 && lengthType < 4) {
+
+      creatiriaFlag = true;
+
+    } else {
+      lengthType = prompt("The second option is how many types of character you want in your password ?" +
+        "\n1,2,3,4 ?");
+
+    }
+
+  }
+
+
+  answerType.length = lengthType;
+  creatiriaFlag = false;
 
   for (var i = 0; i < lengthType; i++) {
 
-    answerType[i] = prompt("Which character you want ? " + "lowercase, uppercase, numeric or special ");
+    answerType[i] = prompt("Which character you want ? " +
+      "lowercase, uppercase, numeric or special character ");
 
     while (creatiriaFlag === false) {
 
       if ((answerType[i].toLocaleLowerCase() !== "lowercase") &&
         (answerType[i].toLocaleLowerCase() !== "uppercase") &&
         (answerType[i].toLocaleLowerCase() !== "numeric") &&
-        (answerType[i].toLocaleLowerCase() !== "special")) {
-        answerType[i] = prompt("Which character you want ? " + "lowercase, uppercase, numeric or special ");
+        (answerType[i].toLocaleLowerCase() !== "special character")) {
+        answerType[i] = prompt("Which character you want ? " +
+          "lowercase, uppercase, numeric or special character  ");
 
       } else {
         creatiriaFlag = true;
@@ -63,6 +94,7 @@ function generatePassword() {
     creatiriaFlag = false;
 
   }
+
 
   passwordLocal = makingRandomPaswword(theLengthPassword, answerType);
 
