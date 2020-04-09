@@ -19,81 +19,87 @@ function generatePassword() {
 
   var passLength = 0;
   var theLengthPassword = 0;
-  var flag = false;
+  var creatiriaFlag = false;
   var passwordLocal;
-  var type;
+  var answerType = [];
+  var lengthType;
+
+
 
   alert("Welcome to our password generator !");
   alert("For your password there is a password criteria " + "\nthat you need to choice from");
 
-  while (flag === false) {
+  while (creatiriaFlag === false) {
 
     theLengthPassword = prompt("The first option is generate the password with the length criteria" + "\nchoice number between 8 and 128");
 
-    if (theLengthPassword >= 8) {
+    if (theLengthPassword >= 8 && theLengthPassword <= 128) {
+      creatiriaFlag = true;
+    }
+  }
 
-      if (theLengthPassword <= 128) {
+  creatiriaFlag = false;
 
-        passLength = Math.floor(Math.random() * theLengthPassword);
+  lengthType = prompt("How many types of characters you want ? " + "/n1,2,3,4 ?");
 
-        flag = true;
+  for (var i = 0; i < lengthType; i++) {
+
+    answerType[i] = prompt("Which character you want ? " + "lowercase, uppercase, numeric or special ");
+
+    while (creatiriaFlag === false) {
+
+      if ((answerType[i].toLocaleLowerCase() !== "lowercase") &&
+        (answerType[i].toLocaleLowerCase() !== "uppercase") &&
+        (answerType[i].toLocaleLowerCase() !== "numeric") &&
+        (answerType[i].toLocaleLowerCase() !== "special")) {
+        answerType[i] = prompt("Which character you want ? " + "lowercase, uppercase, numeric or special ");
+
+      } else {
+        creatiriaFlag = true;
       }
+
     }
-  }
 
-
-  flag = false;
-
-  while (flag === false) {
-
-    type = prompt("charachter types to include in the password" + "\nlowercase, uppercase, numeric and/or special character");
-    if (type.toLocaleLowerCase() === "lowercase" ||
-      type.toLocaleLowerCase() === "uppercase" ||
-      type.toLocaleLowerCase() === "numeric" ||
-      type.toLocaleLowerCase() === "special character") {
-
-      flag = true;
-    }
+    creatiriaFlag = false;
 
   }
 
-
-  passwordLocal = makingRandomPaswword(passLength, type);
+  passwordLocal = makingRandomPaswword(theLengthPassword, answerType);
 
   return passwordLocal;
 
 }
 
-function makingRandomPaswword(passLength, type) {
+function makingRandomPaswword(theLengthPassword, andswerType) {
 
   var str = "";
-  var characters;
+  var characters = "";
 
-  if (type.toLocaleLowerCase() === "lowercase") {
+  for (var i = 0; i < andswerType.length; i++) {
 
-    characters = "abcdefghijklmnopqrstuvwxyz";
+    if (andswerType[i].toLocaleLowerCase() === "lowercase") {
+      characters += "abcdefghijklmnopqrstuvwxyz";
 
-  } else if (type.toLocaleLowerCase() === "uppercase") {
+    } else if (andswerType[i].toLocaleLowerCase() === "uppercase") {
 
-    characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  } else if (type.toLocaleLowerCase() === "numeric") {
+      characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    } else if (andswerType[i].toLocaleLowerCase() === "numeric") {
 
-    characters = "0123456789";
-  } else {
+      characters += "0123456789";
+    } else {
 
-    characters = "'#$%&()*+,-./:;<=>?@";
+      characters += "'#$%&()*+,-./:;<=>?@";
+    }
   }
-
-  for (var i = 0; i < passLength; i++) {
+  for (var i = 0; i < theLengthPassword; i++) {
 
     str += characters.charAt(Math.floor(Math.random() * characters.length));
 
   }
-
   return str;
 
-}
 
+}
 
 
 
