@@ -17,11 +17,10 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
 
-  var passLength = 0;
   var theLengthPassword = 0;
   var creatiriaFlag = false;
-  var passwordLocal;
   var answerType = [];
+  var passwordLocal;
   var lengthType;
 
 
@@ -56,7 +55,6 @@ function generatePassword() {
   while (creatiriaFlag === false) {
 
     if (Number.isInteger(+lengthType) === true) {
-
 
       if (lengthType > 0 && lengthType <= 4) {
 
@@ -104,13 +102,13 @@ function generatePassword() {
   }
 
 
-  passwordLocal = makingRandomPaswword(theLengthPassword, answerType);
+  passwordLocal = makingRandomPassword(theLengthPassword, answerType);
 
   return passwordLocal;
 
 }
 
-function makingRandomPaswword(theLengthPassword, andswerType) {
+function makingRandomPassword(theLengthPassword, andswerType) {
 
   var str = "";
   var characters = "";
