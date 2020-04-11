@@ -22,6 +22,7 @@ function generatePassword() {
   var answerType = [];
   var passwordLocal;
   var lengthType;
+  var i = 0;
 
 
 
@@ -33,12 +34,14 @@ function generatePassword() {
 
   while (creatiriaFlag === false) {
 
-    theLengthPassword = prompt("The first option is generate the password with the length criteria" + "\nchoose number between 8 and 128");
+    theLengthPassword = prompt("The first option is generate the password with the length criteria." + "\nChoose number between 8 and 128");
+
 
     if (Number.isInteger(+theLengthPassword) === true) {
 
       if (theLengthPassword >= 8 && theLengthPassword <= 128) {
         creatiriaFlag = true;
+        alert("The length of the password that you choose is : " + "\n" + theLengthPassword);
       }
 
     } else {
@@ -74,30 +77,26 @@ function generatePassword() {
 
 
   answerType.length = lengthType;
-  creatiriaFlag = false;
 
-  for (var i = 0; i < lengthType; i++) {
+
+
+  while (i < lengthType) {
 
     answerType[i] = prompt("Which character you want ? " +
       "\nlowercase, uppercase, numeric or special character ");
 
-    while (creatiriaFlag === false) {
+    if ((answerType[i].toLocaleLowerCase() !== "lowercase") &&
+      (answerType[i].toLocaleLowerCase() !== "uppercase") &&
+      (answerType[i].toLocaleLowerCase() !== "numeric") &&
+      (answerType[i].toLocaleLowerCase() !== "special character")) {
 
-      if ((answerType[i].toLocaleLowerCase() !== "lowercase") &&
-        (answerType[i].toLocaleLowerCase() !== "uppercase") &&
-        (answerType[i].toLocaleLowerCase() !== "numeric") &&
-        (answerType[i].toLocaleLowerCase() !== "special character")) {
-        alert("Wrong input, let's try again.");
-        answerType[i] = prompt("Which character you want ? " +
-          "\nlowercase, uppercase, numeric or special character  ");
+      //if the input is not valid then we come inside here
+      alert("Wrong input, let's try again.");
 
-      } else {
-        creatiriaFlag = true;
-      }
-
+    } else {
+      //if the input is good then we come inside here and incremet i
+      i++;
     }
-
-    creatiriaFlag = false;
 
   }
 
@@ -129,10 +128,10 @@ function makingRandomPassword(theLengthPassword, andswerType) {
       characters += "'#$%&()*+,-./:;<=>?@";
     }
   }
-  for (var i = 0; i < theLengthPassword; i++) {
-
+  var j = 0;
+  while (j < theLengthPassword) {
     str += characters.charAt(Math.floor(Math.random() * characters.length));
-
+    j++;
   }
   return str;
 

@@ -27,8 +27,9 @@ header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  color: hsl(256, 99%, 46%);
   border: 1px solid black;
+  text-decoration: underline dotted;
 
 }
 
@@ -40,6 +41,7 @@ header {
   color: hsl(206, 17%, 28%);
   font-size: 18px;
   margin: 0 auto;
+  margin-top: 20px;
   max-width: 800px;
   padding: 30px 40px;
 }
