@@ -30,7 +30,8 @@ function generatePassword() {
   alert("Welcome to our password generator !");
   alert("To generate a new password there is 2 Acceptance Criteria: " +
     "\n1: Length of the password" +
-    "\n2: Character types to include in the password");
+    "\n2: Character types to include in the password :" +
+    "\n uppercase,lowercase,numeric and special character");
 
   while (creatiriaFlag === false) {
 
