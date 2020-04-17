@@ -18,12 +18,17 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
 
   var theLengthPassword = 0;
+
+  // checking if the criteria is acceptable
   var creatiriaFlag = false;
+  // array of types characters
   var answerType = [];
+  // string of the password including :
+  //  type character and the length
   var passwordLocal;
+  // Number of how many characters types is allowd
   var lengthType;
   var i = 0;
-
 
 
 
@@ -107,21 +112,22 @@ function generatePassword() {
   return passwordLocal;
 
 }
-
-function makingRandomPassword(theLengthPassword, andswerType) {
+// function that return the password of string 
+// function have two arguments : 1. the length of the password, 2. array of type chracter.
+function makingRandomPassword(theLengthPassword, answerType) {
 
   var str = "";
   var characters = "";
 
-  for (var i = 0; i < andswerType.length; i++) {
+  for (var i = 0; i < answerType.length; i++) {
 
-    if (andswerType[i].toLocaleLowerCase() === "lowercase") {
+    if (answerType[i].toLocaleLowerCase() === "lowercase") {
       characters += "abcdefghijklmnopqrstuvwxyz";
 
-    } else if (andswerType[i].toLocaleLowerCase() === "uppercase") {
+    } else if (answerType[i].toLocaleLowerCase() === "uppercase") {
 
       characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    } else if (andswerType[i].toLocaleLowerCase() === "numeric") {
+    } else if (answerType[i].toLocaleLowerCase() === "numeric") {
 
       characters += "0123456789";
     } else {
