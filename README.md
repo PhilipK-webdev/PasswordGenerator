@@ -15,7 +15,7 @@ SO THAT I can create a strong password that provides greater security
 ```
 ## Screenshot
 
-![password](img\password.PNG)
+![](./img/password.PNG)
 
 
 ### Prerequisites
